@@ -1,0 +1,205 @@
+:root {
+    --blue: #0f6fc5;
+    --indigo: #6610f2;
+    --purple: #613d7c;
+    --pink: #e83e8c;
+    --red: #ca3120;
+    --orange: #f0ad4e;
+    --yellow: #ff7518;
+    --green: #357a32;
+    --teal: #20c997;
+    --cyan: #008196;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #0f6fc5;
+    --secondary: #ced4da;
+    --success: #357a32;
+    --info: #008196;
+    --warning: #f0ad4e;
+    --danger: #ca3120;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Combo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Combo&family=Roboto+Mono:wght@100&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #181b1e;
+    height: 200em;
+}
+
+.header-container {
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    width: 100%;
+    height: 35em;
+}
+
+.border-img-container {
+    display: inline-block;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    width: 15em;
+    height: 15em;
+    border-radius: 100%;
+    border: 0.2em solid cyan;
+    left: 50%;
+    transform: translateX(-50%) ;
+    top: 15em;
+    box-shadow: inset 0 0 0.5em cyan, 0 0 1.5em cyan;
+    transition: all 1s;
+}
+
+.border-img-container:hover {
+    box-shadow: inset 0em 0 1em cyan, 0 0 3em cyan;
+    width: 16em;
+    height: 16em;
+    cursor: pointer;
+}
+
+.profile-img-container {
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-img-container > img {
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.line-color {
+    display: block;
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    width: 0em;
+    height: 0px;
+    background-color: cyan;
+    left: 50%;
+    /* transform: translateX(-50%) ;
+    transform: translateX(-50%) ; */
+    top: 30.22em;
+    border: 0px solid cyan;
+    border-radius: 0 0 1em 1em;;
+    box-shadow: inset 0 0 0.6em cyan, 0 0 1em cyan;
+    transition: all 50ms;
+}
+
+.container-flex {
+    display: flex;
+    flex: 1 1 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.display-box {
+    text-align: center;
+    width: 50%;
+    transition: all 1s;
+    opacity: 0;
+}
+
+.display-none {
+    width: 50%;
+}
+.display-box-ico {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.display-box-ico > i {
+    margin-top: 25%;
+}
+
+.fa-solid {
+    color: cyan;
+}
+
+
+.display-box-top {
+    display: block;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    transform: translateX(-50%) ;
+    right: auto;
+    width: 20em;
+}
+
+.display-box-inner {
+    padding: 2em;
+}
+
+.display-box-inner > div {
+    border-right: 2px solid cyan;
+    border-left: 2px solid cyan;
+    border-radius: 2em 2em 2em 2em;
+    padding: 2em;
+}
+
+.light-box {
+    width: 0%;
+    margin-bottom: 1em;
+    height: 0px;
+    position: relative;
+    border: 2px solid cyan;
+    border-radius: 2em 2em 2em 2em;;
+    box-shadow: inset 0 0 0.6em cyan, 0 0 0.6em cyan;
+    transition: all 1s;
+    opacity: 0;
+}
+
+
+ /*  --------------------------- FONT --------------------------- */
+p {
+    margin: 0px;
+    padding-top: 1.5em;
+    padding-left: 1em;
+    padding-right: 1.5em;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+
+}
+
+.date {
+    font-family: 'Combo', cursive;
+}
+
+h1 {
+    margin: 0px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+h2 {
+    
+    margin: 0px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin-bottom: 1em;
+}
+
+h3 {
+    margin: 0px;
+    display: block;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+}
+ /* --------------------------- FONT --------------------------- */
