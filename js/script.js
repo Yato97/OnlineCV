@@ -2,6 +2,8 @@ const line_color = document.getElementsByClassName("line-color")[0];
 const border_img = document.getElementsByClassName("border-img-container")[0];
 const display_box = document.getElementsByClassName("display-box");
 const display_span = document.getElementsByClassName("light-box");
+const display_box_inner = document.getElementsByClassName("display-box-inner");
+const selector = document.getElementsByClassName("selector");
 
 var posY = 0;
 var ticking = false;
@@ -12,30 +14,48 @@ var lineY = 0;
 var lastScroll = 0;
 var scrollingDown = false;
 var middle = line_color.getBoundingClientRect().x;
-var screenWidth = window.screen.width;
+var screenWidth = window.innerWidth;
+var responsive = 600;
+
+
 
 function init_pos_box() {
-    for (let i = 0; i < display_box.length; i++) {
-        if (i%2 == 0) {
-            display_box.item(i).style.transform = "translateY(50%)";
-            display_span.item(i).style.marginLeft = "50%";
-        } else {
-            display_box.item(i).style.transform = "translateY(50%)";
-            display_span.item(i).style.marginLeft = "50%";
+    if (screenWidth < responsive) {
+        for (let i = 0; i <= display_box.length; i++) {
+            display_box.item(i).style.transition = "all 600ms"
+            display_box.item(i).style.width = "100%";
+            display_box.item(i).style.height = "0%";
+        }
+    }
+    else {
+        for (let i = 0; i < display_box.length; i++) {
+            if (i%2 == 0) {
+                display_box.item(i).style.transform = "translateY(50%)";
+                display_span.item(i).style.marginLeft = "50%";
+            } else {
+                display_box.item(i).style.transform = "translateY(50%)";
+                display_span.item(i).style.marginLeft = "50%";
+            }
         }
     }
 }
 
 function reset_pos_box() {
-    if (index%2 == 0) {
-        display_box.item(index).style.transform = "translateY(50%)";
-        display_span.item(index).style.marginLeft = "50%";
-    } else {
-        display_box.item(index).style.transform = "translateY(50%)";
-        display_span.item(index).style.marginLeft = "50%";
+    if (screenWidth < responsive) {
+        display_box.item(index).style.width = "100%";
+    }
+    else {
+        if (index%2 == 0) {
+            display_box.item(index).style.transform = "translateY(50%)";
+            display_span.item(index).style.marginLeft = "50%";
+        } else {
+            display_box.item(index).style.transform = "translateY(50%)";
+            display_span.item(index).style.marginLeft = "50%";
+        }
     }
     display_box.item(index).style.opacity = "0";
     display_span.item(index).style.opacity = "0";
+    selector.item(index).style.opacity = "0";
     display_span.item(index).style.width = "0px";
     if (!index <= 0) {
         index-=1;
@@ -43,17 +63,25 @@ function reset_pos_box() {
 }
 
 function display_box_pos() {
-    if (index%2 == 0) {
-        display_span.item(index).style.marginLeft = "25%";
-        display_span.item(index).style.width = "25%";
-        display_box.item(index).style.transform = "translateY(0%)";
-    } else {
-        display_span.item(index).style.marginLeft = "50%";
-        display_span.item(index).style.width = "25%";
-        display_box.item(index).style.transform = "translateY(0%)";
+    if (screenWidth < responsive) {
+        display_box.item(index).style.width = "100%";
+    }
+    else {
+        if (index%2 == 0) {
+            display_span.item(index).style.marginLeft = "25%";
+            display_span.item(index).style.width = "25%";
+            display_box.item(index).style.transform = "translateY(0%)";
+        } else {
+            display_span.item(index).style.marginLeft = "50%";
+            display_span.item(index).style.width = "25%";
+            display_box.item(index).style.transform = "translateY(0%)";
+        }
     }
     display_box.item(index).style.opacity = "1";
-    display_span.item(index).style.opacity = "1";
+    selector.item(index).style.opacity = "1";
+    if (screenWidth > responsive) {
+        display_span.item(index).style.opacity = "1";
+    }
     index += 1;
 }
 
@@ -66,7 +94,16 @@ function display_line(position_scroll) {
 
 function display_scroll_box() {
     if (index >= 0 && index < len_display_box) {
-        let displayPos = display_span[index].getBoundingClientRect().top;
+        let display = display_span[index].getBoundingClientRect().top;
+        let childBox = display_box_inner[index].children.item(0);
+        let displayPosResponsive = childBox.getBoundingClientRect().top;
+        let displayPos = 0;
+        if (screenWidth < responsive) {
+            displayPos = displayPosResponsive;
+        }
+        else {
+            displayPos = display;
+        }
         if (scrollingDown) {
             if (lineY >= displayPos) {
                 display_box_pos();
@@ -89,7 +126,6 @@ function reset_resize() {
 
 window.addEventListener('scroll', function(e) {
   posY = window.scrollY;
-
     if (!ticking) {
         window.requestAnimationFrame(function() {
             ticking = false;
@@ -112,5 +148,17 @@ window.addEventListener('scroll', function(e) {
     lastScroll = posY;
     ticking = true;
 });  
+
+function debounce(func){
+    var timer;
+    return function(event){
+      if(timer) clearTimeout(timer);
+      timer = setTimeout(func,200,event);
+    };
+}
+window.addEventListener("resize",debounce(function(e){
+    screenWidth = window.innerWidth;
+    location.reload()
+}));
 
 init_pos_box()
