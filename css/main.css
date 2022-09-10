@@ -3,7 +3,7 @@
     --background: #181b1e;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Combo&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Combo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Combo&family=Roboto+Mono:wght@100&display=swap');
 
 @font-face {
@@ -198,16 +198,16 @@ p {
     margin: 0px;
     padding-top: 1.5em;
     padding-left: 1em;
-    padding-right: 1.5em;
+    padding-right: 1em;
     display: inline-block;
-    font-family: 'Combo', cursive;
+    font-family: 'Combot', cursive;
     color: white;
 
 }
 
 .date {
-    font-family: 'Combot', cursive;
-    font-style: italic;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, cursive;
+    font-style: italic
 }
 
 h1 {
@@ -241,6 +241,17 @@ h4 {
 h5 {
     margin-top: 0.2em;
     margin-bottom: 0px;
+}
+
+h6 {
+    margin: 0px;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1.5em;
+    font-size: 0.9em;
+    display: inline-block;
+    font-family: 'Combo', cursive;
+    color: white;
 }
 
 #name {
