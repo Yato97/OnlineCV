@@ -93,7 +93,7 @@ body {
     border: 0px solid var(--lightneon);
     border-radius: 0 0 1em 1em;;
     box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
-    transition: all 50ms;
+    transition: all 50ms, opacity 100ms;
     z-index: -1;
 }
 

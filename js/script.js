@@ -14,7 +14,18 @@ const footer_border = document.getElementsByClassName("light-footer");
 const box_progress = document.getElementsByClassName("box-footer");
 const progress = document.getElementsByClassName("progress");
 const progress_number = document.getElementsByClassName("number");
+const selector_footer = document.getElementsByClassName("selector-footer")[0];
+
+const endLine = document.getElementById("ref");
+const links = document.getElementsByClassName("link");
+const inner_links = document.getElementsByClassName("inner-link");
+const linktop = document.getElementById("light-link-top");
+const linkleft = document.getElementById("light-link-left");
+const linkright = document.getElementById("light-link-right");
+const lienTitle = document.getElementById("liens");
+
 var displayed = false;
+var displayedLink = false;
 
 var posY = 0;
 var ticking = false;
@@ -87,16 +98,10 @@ function display_box_pos() {
 }
 
 function display_line(position_scroll) {
-    if (position_scroll >= 0 || position_scroll < footer_border_top.getBoundingClientRect().top) {
-        let string_pos = position_scroll;
-        line_color.style.height = string_pos+"px";
-        line_color.style.borderWidth = "2px";
-        lineY = line_color.getBoundingClientRect().bottom
-    }
-    else {
-        let string_pos = footer_border_top.getBoundingClientRect().top;
-        line_color.style.height = string_pos+"px";
-    }
+    let string_pos = position_scroll;
+    line_color.style.height = string_pos+"px";
+    line_color.style.borderWidth = "2px";
+    lineY = line_color.getBoundingClientRect().bottom
 }
 
 function display_scroll_box() {
@@ -128,16 +133,17 @@ function display_scroll_box() {
 }
 
 function displayFooter() {
+    selector_footer.style.opacity = "1";
     turnOpacityBox(true);
     footer.style.opacity = "1";
-    footer_border_top.style.width = "90%";
+    footer_border_top.style.width = "89.5%";
     footer_border_top.style.marginLeft = "0%";
     setTimeout(displayBorderFooter, 800);
 }
 
 function displayBorderFooter() {
-    footer_border_left.style.height = "96.5%";
-    footer_border_right.style.height = "96.5%";
+    footer_border_left.style.height = "39.6em";
+    footer_border_right.style.height = "39.6em";
     setTimeout(displayBottomrFooter, 800);
 }
 
@@ -146,7 +152,7 @@ function sleep(ms) {
 }
    
 function displayBottomrFooter() {
-    footer_border_bot.style.width = "90%";
+    footer_border_bot.style.width = "89.5%";
     setTimeout(displayBoxProgress(0), 200);
 }
 var progressTab = [88,72,65,95,90]
@@ -174,6 +180,7 @@ function turnOpacityBox(state) {
 }
 
 function removeFooter() {
+    selector_footer.style.opacity = "0";
     footer.style.opacity = "0";
     footer_border_left.style.height = "0%";
     footer_border_right.style.height = "0";
@@ -196,13 +203,64 @@ function removeFooterTop() {
 
 }
 
+
+function displayLinkTop() {
+    endLine.style.opacity = "1";
+    linktop.style.opacity = "1";
+    lienTitle.style.opacity = "1";
+    linktop.style.width = "50%";
+    linktop.style.transform = "translateX(-50%)";
+    setTimeout(displayLinkBorder, 800);
+}
+
+function displayLinkBorder() {
+    linkleft.style.opacity = "1";
+    linkright.style.opacity = "1";
+    linkleft.style.height = "5.5em";
+    linkright.style.height = "5.5em";
+    setTimeout(displayLink, 800);
+}
+
+function displayLink() {
+    for (let index = 0; index < links.length; index++) {
+        links.item(index).style.opacity = "1";
+        inner_links.item(index).transform = "rotateY(180deg)";
+    }
+}
+
+function reserLinks() {
+    linkleft.style.opacity = "0";
+    linkright.style.opacity = "0";
+    linkleft.style.height = "0em";
+    linkright.style.height = "0em";
+    endLine.style.opacity = "0";
+    linktop.style.opacity = "0";
+    lienTitle.style.opacity = "0";
+    linktop.style.width = "0%";
+    for (let index = 0; index < links.length; index++) {
+        links.item(index).style.opacity = "0";
+    }
+}
+
 window.addEventListener('scroll', function(e) {
   posY = window.scrollY;
     if (!ticking) {
         window.requestAnimationFrame(function() {
             ticking = false;
+            if (lineY >= endLine.getBoundingClientRect().top) {
+                if (!displayedLink) {
+                    displayLinkTop();
+                    displayedLink = true;
+                    line_color.style.opacity = "0";
+                }
+            } else {
+                if (displayedLink) {
+                    reserLinks();
+                    displayedLink = false;
+                    line_color.style.opacity = "1";
+                }
+            }
             if (lineY <= footer_border_top.getBoundingClientRect().bottom) {
-                display_line(posY);
                 if (displayed) {
                     removeFooter();
                     displayed = false;
@@ -213,6 +271,7 @@ window.addEventListener('scroll', function(e) {
                     displayed = true;
                 }
             }
+            display_line(posY);
             display_scroll_box();   
 
             if (posY <= 1) {

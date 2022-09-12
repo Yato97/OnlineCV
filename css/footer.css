@@ -8,7 +8,7 @@
     margin-left: 5%;
     margin-top: 3em;
     background-color: #181b1e;
-    height: 97vh;
+    height: 40em;
     display: flex;
     flex: 1 1 1;
     flex-direction: row;
@@ -16,13 +16,14 @@
     opacity: 0;
     transition: opacity 500ms;
     text-align: center;
+    border-radius: 10px  10px  10px  10px;
 }
 
 #title-footer {
     display: inline-block;
     margin: 0px;
     padding: 0px;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Combo';
     margin-top: 1em;
     width: 100%;
@@ -59,6 +60,7 @@
     color: #181b1e;
     padding: 0px;
     margin: 0px;
+    vertical-align: middle;
 }
 
 .progress {
@@ -107,12 +109,12 @@
 }
 #light-header-right {
     width: 0%;
-    left : 95%;
+    left :94.6%;
     height: 0%;
     opacity: 0;
 }
 #light-header-bottom {
-    margin-top: 96.7vh;
+    margin-top: 39.7em;
     width: 0%;
     height: 0px;
     opacity: 0;
@@ -130,11 +132,12 @@
 
 
 .selector-footer {
-    opacity: 1;
+    opacity: 0;
     z-index: 2;
     display: block;
     position: absolute;
-    transform: translateX(-0.89em);
+    transform: translateX(-0.868em);
+    transition: all 500ms;
     margin-top: 2.2em;
     left: 50%;
     width: 2em;
@@ -153,3 +156,125 @@
     color: #181b1e;
 }
 
+
+#ref {
+    margin-top: 10em;
+}
+
+.container-link {
+    margin-top: 11em;
+    display: block;
+    width: 100%;
+    height: 20em;
+    text-align: center;
+}
+
+.container-link > div {
+    display: flex;
+    flex: 1 1 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.container-link > h1 {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.5em;
+    font-family: 'Combo';
+    margin-top: 1em;
+    width: 100%;
+    height: 1em;
+    opacity: 0;
+}
+
+.link {
+    margin-top: 2em;
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    height: 15%;
+    opacity: 0;
+    transition: all 500ms;
+}
+
+.link > div:hover .iconesfooter{
+    transition: all 1s;
+    cursor: pointer;
+    /* transform: rotateY(360deg); */
+    transition: transform 3s;
+}
+
+.link > div:hover {
+    transition: all 1s;
+    cursor: pointer;
+    /* transform: rotateX(-360deg); */
+    transition: transform 2s;
+}
+
+.iconesfooter {
+    display: block;
+    position: relative;
+    margin-left: 25%;
+    margin-top: 25%;
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    background-color: var(--lightneon);
+    box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon); 
+}
+
+.iconesfooter > i {
+    display: inline-block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 25%;  
+    color: #181b1e;
+}
+
+.link > div {
+    width: 4em;
+    height: 4em;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #181b1e;
+    border: 3px solid var(--lightneon);
+    border-radius: 100%;
+    box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
+}
+
+/* .light-link {
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    border: 2px solid var(--lightneon);
+    border-radius: 2em 2em 2em 2em;;
+    box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
+    transition: width 800ms, height 800ms, opacity 800ms;
+}
+
+#light-link-top {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    margin-top: 10.8em;  
+    opacity: 0;
+}
+
+#light-link-left {
+    left: 25%;
+    width: 0%;
+    margin-top: 10.8em;  
+    height: 0em;
+    opacity: 0;
+}
+
+#light-link-right{
+    left: 75%;
+    width: 0%;
+    height: 0em;
+    margin-top: 10.8em;
+    opacity: 0;  
+} */
