@@ -5,6 +5,17 @@ const display_span = document.getElementsByClassName("light-box");
 const display_box_inner = document.getElementsByClassName("display-box-inner");
 const selector = document.getElementsByClassName("selector");
 
+const footer = document.getElementsByClassName("container-flex-p")[0];
+const footer_border_top = document.getElementById("light-header-top");
+const footer_border_left = document.getElementById("light-header-left");
+const footer_border_right = document.getElementById("light-header-right");
+const footer_border_bot = document.getElementById("light-header-bottom");
+const footer_border = document.getElementsByClassName("light-footer");
+const box_progress = document.getElementsByClassName("box-footer");
+const progress = document.getElementsByClassName("progress");
+const progress_number = document.getElementsByClassName("number");
+var displayed = false;
+
 var posY = 0;
 var ticking = false;
 var resizing = false;
@@ -76,10 +87,16 @@ function display_box_pos() {
 }
 
 function display_line(position_scroll) {
-    let string_pos = position_scroll;
-    line_color.style.height = string_pos+"px";
-    line_color.style.borderWidth = "2px";
-    lineY = line_color.getBoundingClientRect().bottom
+    if (position_scroll >= 0 || position_scroll < footer_border_top.getBoundingClientRect().top) {
+        let string_pos = position_scroll;
+        line_color.style.height = string_pos+"px";
+        line_color.style.borderWidth = "2px";
+        lineY = line_color.getBoundingClientRect().bottom
+    }
+    else {
+        let string_pos = footer_border_top.getBoundingClientRect().top;
+        line_color.style.height = string_pos+"px";
+    }
 }
 
 function display_scroll_box() {
@@ -110,8 +127,73 @@ function display_scroll_box() {
     }
 }
 
-function reset_resize() {
-    
+function displayFooter() {
+    turnOpacityBox(true);
+    footer.style.opacity = "1";
+    footer_border_top.style.width = "90%";
+    footer_border_top.style.marginLeft = "0%";
+    setTimeout(displayBorderFooter, 800);
+}
+
+function displayBorderFooter() {
+    footer_border_left.style.height = "96.5%";
+    footer_border_right.style.height = "96.5%";
+    setTimeout(displayBottomrFooter, 800);
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+   
+function displayBottomrFooter() {
+    footer_border_bot.style.width = "90%";
+    setTimeout(displayBoxProgress(0), 200);
+}
+var progressTab = [88,72,65,95,90]
+async function displayBoxProgress(i) {
+    let index = i;
+    if (index < box_progress.length) {
+        box_progress.item(index).style.opacity = "1";
+        progress.item(index).style.width = progressTab[index]+"%";
+        progress_number.item(index).innerHTML =  progress.item(index).style.width;
+
+        index++;
+        await sleep(800);
+        displayBoxProgress(index);
+    }
+}
+
+function turnOpacityBox(state) {
+    if (!state) {
+    } else {
+        footer_border_top.style.opacity = "1";
+        footer_border_left.style.opacity = "1";
+        footer_border_right.style.opacity = "1";
+        footer_border_bot.style.opacity = "1";
+    }
+}
+
+function removeFooter() {
+    footer.style.opacity = "0";
+    footer_border_left.style.height = "0%";
+    footer_border_right.style.height = "0";
+    footer_border_bot.style.width = "0%";
+    footer_border_left.style.opacity = "0";
+    footer_border_right.style.opacity = "0";
+    footer_border_bot.style.opacity = "0";
+    for (let index = 0; index < box_progress.length; index++) {
+        box_progress.item(index).style.opacity = "0";
+        progress.item(index).style.width = "0%";
+        progress_number.item(index).innerHTML =  progress.item(index).style.width;
+        
+    }
+    setTimeout(removeFooterTop,800);
+}
+
+function removeFooterTop() {
+    footer_border_top.style.width = "0%";
+    footer_border_top.style.marginLeft = "44.7%";
+
 }
 
 window.addEventListener('scroll', function(e) {
@@ -119,7 +201,18 @@ window.addEventListener('scroll', function(e) {
     if (!ticking) {
         window.requestAnimationFrame(function() {
             ticking = false;
-            display_line(posY);
+            if (lineY <= footer_border_top.getBoundingClientRect().bottom) {
+                display_line(posY);
+                if (displayed) {
+                    removeFooter();
+                    displayed = false;
+                }
+            } else {
+                if (!displayed) {
+                    displayFooter();
+                    displayed = true;
+                }
+            }
             display_scroll_box();   
 
             if (posY <= 1) {

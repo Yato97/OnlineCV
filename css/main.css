@@ -1,5 +1,5 @@
 :root {
-    --lightneon: rgb(255, 0, 200);
+    --lightneon:cyan;
     --background: #181b1e;
 }
 
@@ -11,6 +11,10 @@
     src: url("/font/Combo-Regular.ttf");
 }
 
+* {
+    margin: 0px;
+    padding: 0px;
+}
 body {
     margin: 0px;
     padding: 0px;
@@ -170,7 +174,6 @@ body {
     transition: all 800ms;
     transition-delay: 500ms;
     z-index: 2;
-    position: absolute;
     display: inline-block;
     position: relative;
     transform: translateX(-50%);
@@ -199,14 +202,13 @@ p {
     padding-top: 1.5em;
     padding-left: 1em;
     padding-right: 1em;
-    display: inline-block;
-    font-family: 'Combot', cursive;
+    font-family: 'Combo', cursive;
     color: white;
 
 }
 
 .date {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, cursive;
+    font-family: 'Combo', cursive;
     font-style: italic
 }
 
@@ -245,11 +247,10 @@ h5 {
 
 h6 {
     margin: 0px;
-    padding-top: 1em;
-    padding-left: 1em;
-    padding-right: 1.5em;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
     font-size: 0.9em;
-    display: inline-block;
     font-family: 'Combo', cursive;
     color: white;
 }
@@ -264,7 +265,5 @@ h6 {
     font-family: 'Roboto Mono', monospace;
     color: white;
     font-size: 1em;
-    margin-left: 2em;
-    margin-right: 2em;
 }
  /* --------------------------- FONT --------------------------- */
