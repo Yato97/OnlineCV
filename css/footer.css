@@ -34,7 +34,6 @@
     display: block;
     text-align: center;
     width: 100%;
-    margin-top: 1em;
     opacity: 0;
     transition: all 500ms;
 }
@@ -165,8 +164,10 @@
     margin-top: 11em;
     display: block;
     width: 100%;
-    height: 20em;
+    height: 14em;
     text-align: center;
+    opacity: 0;
+    transition: all 1s;
 }
 
 .container-link > div {
@@ -178,16 +179,14 @@
     height: 100%;
 }
 
-.container-link > h1 {
+.container-link h1 {
     display: inline-block;
-    margin: 0px;
-    padding: 0px;
-    font-size: 1.5em;
-    font-family: 'Combo';
+    position: relative;
     margin-top: 1em;
-    width: 100%;
-    height: 1em;
-    opacity: 0;
+    padding: 0px;
+    font-size: 1.2em;
+    font-family: 'Combo';
+    opacity: 1;
 }
 
 .link {
@@ -200,25 +199,35 @@
     transition: all 500ms;
 }
 
-.link > div:hover .iconesfooter{
+a:hover .iconesfooter{
     transition: all 1s;
     cursor: pointer;
-    /* transform: rotateY(360deg); */
-    transition: transform 3s;
+    transform: rotateY(360deg);
+    transition: transform 2s;
+    background-color: white;
+    box-shadow: inset 0 0 0.6em white, 0 0 1em white; 
 }
 
-.link > div:hover {
+
+a:hover  h1 {
+    transition: all 500ms;
+    text-shadow: white 1px 0 10px;
+    color: #181b1e;
+}
+
+.link > a:hover {
     transition: all 1s;
     cursor: pointer;
-    /* transform: rotateX(-360deg); */
-    transition: transform 2s;
+    background-color: unset;
+    border-color:white;
+    box-shadow: inset 0 0 0.6em white, 0 0 1em white;
 }
 
 .iconesfooter {
     display: block;
-    position: relative;
-    margin-left: 25%;
-    margin-top: 25%;
+    position: absolute;
+    margin-left: 2.5em;
+    margin-top: -1em;
     width: 2em;
     height: 2em;
     border-radius: 100%;
@@ -235,20 +244,32 @@
 }
 
 .link > div {
-    width: 4em;
+    display: inline-block;
+    text-align: center;
+    width: 7em;
     height: 4em;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
     background-color: #181b1e;
     border: 3px solid var(--lightneon);
-    border-radius: 100%;
+    border-radius: 2em;
     box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
 }
 
-/* .light-link {
+.link > a {
+    display: inline-block;
+    width: 7em;
+    height: 4em;
+    text-align: center;
+    background-color: #181b1e;
+    border: 3px solid var(--lightneon);
+    border-radius: 2em;
+    box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
+}
+
+.light-link {
     padding: 0px;
     margin: 0px;
-    position: relative;
+    position: absolute;
     border: 2px solid var(--lightneon);
     border-radius: 2em 2em 2em 2em;;
     box-shadow: inset 0 0 0.6em var(--lightneon), 0 0 1em var(--lightneon);
@@ -257,24 +278,44 @@
 
 #light-link-top {
     left: 50%;
-    transform: translateX(-50%);
-    width: 0%;
+    width: 0%; 
     margin-top: 10.8em;  
     opacity: 0;
 }
 
 #light-link-left {
-    left: 25%;
+    /* left: 25%; */
     width: 0%;
     margin-top: 10.8em;  
-    height: 0em;
+    height: 2em;
     opacity: 0;
 }
 
 #light-link-right{
-    left: 75%;
+    /* left: 75%; */
     width: 0%;
-    height: 0em;
+    height: 2em;
     margin-top: 10.8em;
     opacity: 0;  
-} */
+}
+
+footer {
+    display: block;
+    height: 17em;
+    width: 100%;
+}
+
+footer > div {
+    display: inline-block;
+    margin-top: 15em;
+    height: 2.5em;
+    width: 100%;
+    background-color: #181b1e;
+    text-align: center;
+}
+
+footer > div > p {
+    margin-top: 0.8em;
+    padding: 0;
+    text-shadow: white 1px 0 10px;
+}

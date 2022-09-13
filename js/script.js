@@ -18,6 +18,7 @@ const selector_footer = document.getElementsByClassName("selector-footer")[0];
 
 const endLine = document.getElementById("ref");
 const links = document.getElementsByClassName("link");
+const container_link = document.getElementsByClassName("container-link")[0];
 const inner_links = document.getElementsByClassName("inner-link");
 const linktop = document.getElementById("light-link-top");
 const linkleft = document.getElementById("light-link-left");
@@ -206,6 +207,7 @@ function removeFooterTop() {
 
 function displayLinkTop() {
     endLine.style.opacity = "1";
+    container_link.style.opacity = "1";
     linktop.style.opacity = "1";
     lienTitle.style.opacity = "1";
     linktop.style.width = "50%";
@@ -214,6 +216,8 @@ function displayLinkTop() {
 }
 
 function displayLinkBorder() {
+    linkleft.style.left = linktop.getBoundingClientRect().x+"px";
+    linkright.style.left = linktop.getBoundingClientRect().width+linktop.getBoundingClientRect().x-2+"px";
     linkleft.style.opacity = "1";
     linkright.style.opacity = "1";
     linkleft.style.height = "5.5em";
@@ -237,6 +241,7 @@ function reserLinks() {
     linktop.style.opacity = "0";
     lienTitle.style.opacity = "0";
     linktop.style.width = "0%";
+    container_link.style.opacity = "0";
     for (let index = 0; index < links.length; index++) {
         links.item(index).style.opacity = "0";
     }
@@ -290,5 +295,12 @@ window.addEventListener('scroll', function(e) {
     lastScroll = posY;
     ticking = true;
 });  
+
+function resize() {
+    linkleft.style.left = linktop.getBoundingClientRect().x+"px";
+    linkright.style.left = linktop.getBoundingClientRect().width+linktop.getBoundingClientRect().x-2+"px";
+  }
+  
+window.onresize = resize;
 
 init_pos_box()
