@@ -192,13 +192,8 @@ function removeFooter() {
         progress_number.item(index).innerHTML =  progress.item(index).style.width;
         
     }
-    setTimeout(removeFooterTop,800);
-}
-
-function removeFooterTop() {
     footer_border_top.style.width = "0%";
     footer_border_top.style.marginLeft = footer.getBoundingClientRect().width/2+"px";
-
 }
 
 
