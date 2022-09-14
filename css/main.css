@@ -1,5 +1,5 @@
 :root {
-    --lightneon:cyan;
+    --lightneon:rgb(0, 247, 255);
     --background: #181b1e;
 }
 
@@ -258,7 +258,7 @@ h6 {
     font-family: 'Combo', cursive;
     color: var(--background);
     font-size: 1.5em;
-    text-shadow: var(--background) 1px 0 10px;
+    text-shadow: var(--background) 1px 0 15px;
 }
 
 #desc {
