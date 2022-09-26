@@ -1,4 +1,5 @@
-## Online CV 
+## Project
+<p>Online CV make with html css js</p>
 <a href="#license"><img src="https://img.shields.io/badge/License-MIT-green" alt="License"></a>
 
 ## Page link
